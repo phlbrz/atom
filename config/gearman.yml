@@ -7,6 +7,8 @@ all:
       - arFindingAidJob
     acl:
       - arInheritRightsJob
+    calculate_dates:
+      - arCalculateAccumulatedDatesJob
     move:
       - arObjectMoveJob
     search_csv_export:

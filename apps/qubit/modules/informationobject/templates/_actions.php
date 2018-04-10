@@ -56,6 +56,11 @@
               <?php if ($resource->hasChildren()): ?>
                 <li><?php echo link_to(__('Manage rights inheritance'), array($resource,  'sf_route' => 'slug/default', 'module' => 'right', 'action' => 'manage')) ?></li>
               <?php endif; ?>
+
+              <li class="divider"></li>
+
+              <li><?php echo link_to(__('Calculate date range from lower levels'), array($resource, 'module' => 'informationobject', 'action' => 'calculateDates', 'eventId' => 460)) ?></li>
+
             </ul>
           </div>
         </li>

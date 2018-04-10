@@ -455,6 +455,7 @@ mapping:
       reference_code_without_country_and_repo: { type: keyword }
       level_of_description_id: { type: integer }
       lft: { type: integer }
+      rgt: { type: integer }
       publication_status_id: { type: integer }
       parent_id: { type: integer, include_in_all: false }
       ancestors: { type: integer, include_in_all: false }
