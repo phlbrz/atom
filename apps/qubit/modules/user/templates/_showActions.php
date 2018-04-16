@@ -13,7 +13,9 @@
     <?php if (QubitAcl::check($resource, 'create')): ?>
       <li><?php echo link_to (__('Add new'), array('module' => 'user', 'action' => 'add'), array('class' => 'c-btn')) ?></li>
     <?php endif; ?>
-    
+ 
+    <li><?php echo link_to (__('View editing history'), array($resource, 'module' => 'user', 'action' => 'editingHistory'), array('class' => 'c-btn')) ?></li>
+   
     <?php if (QubitAcl::check($resource, 'list')): ?>
       <li><?php echo link_to (__('Return to user list'), array('module' => 'user', 'action' => 'list'), array('class' => 'c-btn')) ?></li>
     <?php endif; ?>
