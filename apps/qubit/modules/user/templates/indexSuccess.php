@@ -87,6 +87,35 @@
       </div>
     <?php endif; ?>
 
+    <div style="text-align: right">
+      <button class="btn" data-toggle="collapse" data-target="#editingHistoryTable">View editing history</button>
+    </div>
+
+    <div id="editingHistoryTable" class="collapse">
+      <table class="table table-bordered sticky-enabled">
+        <thead>
+          <tr>
+            <th>
+              <?php echo __('Title') ?>
+            </th>
+            <th>
+              <?php echo __('Date') ?>
+            </th>
+            <th>
+              <?php echo __('Type') ?>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="editingHistoryRows">
+        </tbody>
+      </table>
+
+      <div style="text-align: right">
+        <input class="btn" type="button" id='previousButton' value='<?php echo __('Previous') ?>'>
+        <input class="btn" type="button" id='nextButton' value='<?php echo __('Next') ?>'>
+      </div>
+    </div>
+
   </section>
 
 </section>

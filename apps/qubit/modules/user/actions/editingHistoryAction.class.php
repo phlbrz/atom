@@ -32,7 +32,7 @@ class UserEditingHistoryAction extends sfAction
     }
 
     // Term ID to term map
-    $this->userActions = array(
+    $userActions = array(
       QubitTerm::USER_ACTION_CREATION_ID => QubitTerm::getById(QubitTerm::USER_ACTION_CREATION_ID),
       QubitTerm::USER_ACTION_MODIFICATION_ID => QubitTerm::getById(QubitTerm::USER_ACTION_MODIFICATION_ID)
     );
@@ -43,11 +43,32 @@ class UserEditingHistoryAction extends sfAction
     $criteria->addDescendingOrderByColumn('created_at');
 
     // Page results
-    $this->pager = new QubitPager('QubitAuditLog');
-    $this->pager->setCriteria($criteria);
-    $this->pager->setPage($page);
-    $this->pager->setMaxPerPage($limit);
+    $pager = new QubitPager('QubitAuditLog');
+    $pager->setCriteria($criteria);
+    $pager->setPage($page);
+    $pager->setMaxPerPage($limit);
 
-    $this->modifications = $this->pager->getResults();
+    // Summarize results
+    $results = array();
+
+    foreach ($pager->getResults() as $modification)
+    {
+      $result = array(
+        'createdAt' => $modification->createdAt,
+        'objectId' => $modification->objectId,
+        'actionType' => $userActions[$modification->actionTypeId]->name
+      );
+
+      array_push($results, $result);    
+    }
+
+    // Return results and paging data
+    $data = array(
+      'results' => $results,
+      'items' => $pager->getNbResults(),
+      'pages' => $pager->getLastPage()
+    );
+
+    return $this->renderText(json_encode($data));
   }
 }
