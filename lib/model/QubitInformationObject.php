@@ -218,7 +218,7 @@ class QubitInformationObject extends BaseInformationObject
     parent::save($connection);
 
     // Log creation/modification
-    if ($this->id != QubitInformationObject::ROOT_ID)
+    if ($this->id != QubitInformationObject::ROOT_ID && sfConfig::get('app_audit_log_enabled'))
     {
       $log = new QubitAuditLog();
       $log->objectId = $this->id;

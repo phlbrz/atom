@@ -30,7 +30,7 @@ class InformationObjectModificationsAction extends sfAction
     }
 
     // Check user authorization
-    if (!QubitAcl::check($this->resource, 'read'))
+    if (!QubitAcl::check($this->resource, 'read') || !sfConfig::get('app_audit_log_enabled'))
     {
       QubitAcl::forwardToSecureAction();
     }
